@@ -29,6 +29,7 @@ body {
 .time__table {
   width: 95%;
   margin: 0 auto;
+  margin-top: 20px;
 }
 .greeting {
   font-size: 1.7rem;
@@ -40,6 +41,7 @@ body {
 .ongoing__class h3,
 .next__class h3 {
   font-size: 4rem;
+  margin-top: 15px;
 }
 .separator {
   background-color: #003049;
@@ -56,7 +58,30 @@ hr {
   font-size: 1.7rem;
   font-weight: 700;
 }
-.today__time__table {
-  border-radius: 6px;
-  box-shadow: 2px 2px 5px rgba(61, 41, 41, 0.3);
+.table th,
+.table td {
+  border: rgba(0, 48, 73, 0.2) solid 1px !important;
+}
+.table th {
+  color: #d62828;
+}
+.table td {
+  color: #003049;
+}
+.table td:nth-child(1) {
+  font-weight: 700;
+}
+.footer {
+  text-align: center;
+  background-color: #fcbf49;
+  padding: 10px;
+  margin-top: 30px;
+}
+.footer p {
+  margin-bottom: 0;
+}
+.footer p a {
+  text-decoration: none;
+  color: #003049;
+  font-weight: 700;
 }
