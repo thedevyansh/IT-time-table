@@ -1,59 +1,59 @@
 var days = {
   monday: [
-    "08:30 - 09:25  JP-P",
-    "09:25 - 10:20  JP-P",
-    "10:40 - 11:35  COA-L",
-    "11:35 - 12:30  JP-L",
+    "08:30 - 09:25  JP-P (Mr. Rajesh Ranjan)",
+    "09:25 - 10:20  JP-P (Mr. Rajesh Ranjan)",
+    "10:40 - 11:35  COA-L (Dr. Priyanka Ahlawat)",
+    "11:35 - 12:30  JP-L (Ms. Smruti)",
     "12:30 - 01:25  -",
     "01:45 - 02:40  -",
     "02:40 - 03:35  MA-T",
     "03:35 - 04:30  DS-T",
   ],
   tuesday: [
-    "08:30 - 09:25  DS-P",
-    "09:25 - 10:20  DS-P",
-    "10:40 - 11:35  DAA-P",
-    "11:35 - 12:30  DAA-P",
+    "08:30 - 09:25  DS-P (Ms. Ruby)",
+    "09:25 - 10:20  DS-P (Ms. Ruby)",
+    "10:40 - 11:35  DAA-P (Dr. Priyanka Ahlawat)",
+    "11:35 - 12:30  DAA-P (Dr. Priyanka Ahlawat)",
     "12:30 - 01:25  -",
-    "01:45 - 02:40  MA-L",
-    "02:40 - 03:35  COA-L",
-    "03:35 - 04:30  DAA-L",
+    "01:45 - 02:40  MA-L (Dr. Smita Jaiswal)",
+    "02:40 - 03:35  COA-L (Dr. Priyanka Ahlawat)",
+    "03:35 - 04:30  DAA-L (Dr. Santosh Kumar)",
   ],
   wednesday: [
     "08:30 - 09:25  DAA-T",
     "09:25 - 10:20  -",
     "10:40 - 11:35  -",
-    "11:35 - 12:30  DS-L",
-    "12:30 - 01:25  JP-L",
+    "11:35 - 12:30  DS-L (Ms. Ruby)",
+    "12:30 - 01:25  JP-L (Ms. Smruti)",
     "01:45 - 02:40  -",
-    "02:40 - 03:35  SE-L",
-    "03:35 - 04:30  COA-L",
+    "02:40 - 03:35  SE-L (Anamika)",
+    "03:35 - 04:30  COA-L (Dr. Priyanka Ahlawat)",
   ],
   thursday: [
-    "08:30 - 09:25  SE-L",
-    "09:25 - 10:20  MA-L",
+    "08:30 - 09:25  SE-L (Anamika)",
+    "09:25 - 10:20  MA-L (Dr. Smita Jaiswal)",
     "10:40 - 11:35  -",
     "11:35 - 12:30  -",
     "12:30 - 01:25  -",
-    "01:45 - 02:40  DS-L",
-    "02:40 - 03:35  DAA-L",
-    "03:35 - 04:30  SE-L",
+    "01:45 - 02:40  DS-L (Ms. Ruby)",
+    "02:40 - 03:35  DAA-L (Dr. Santosh Kumar)",
+    "03:35 - 04:30  SE-L (Anamika)",
   ],
   friday: [
     "08:30 - 09:25  SE-T",
     "09:25 - 10:20  COA-T",
     "10:40 - 11:35  -",
-    "11:35 - 12:30  MA-L",
-    "12:30 - 01:25  DS-L",
+    "11:35 - 12:30  MA-L (Dr. Smita Jaiswal)",
+    "12:30 - 01:25  DS-L (Ms. Ruby)",
     "01:45 - 02:40  -",
-    "02:40 - 03:35  JP-L",
-    "03:35 - 04:30  DAA-L",
+    "02:40 - 03:35  JP-L (Ms. Smruti)",
+    "03:35 - 04:30  DAA-L (Dr. Santosh Kumar)",
   ],
   saturday: [],
   sunday: [],
 };
 
-const addPara = () => {
+const show_image_and_text = () => {
   let todayH2 = document.querySelector(".today h2");
   let today__time__table = document.querySelector(".today__time__table");
   let table = document.querySelector("table");
@@ -64,7 +64,7 @@ const addPara = () => {
   const img = document.createElement("img");
   img.src = "assets/happy.png";
   img.width = "600";
-  div.setAttribute('class', 'myImage');
+  div.setAttribute("class", "myImage");
 
   todayH2.style.display = "none";
   table.style.display = "none";
@@ -97,34 +97,71 @@ const showTodayTimeTable = (timetable) => {
 
 const find_week_day = () => {
   const greetingPara = document.querySelector(".greeting p");
+  const tableTitle = document.querySelector(".today h2");
+  let table = document.querySelector("table");
   let currentHour = new Date().getHours();
+
   if (currentHour >= 0 && currentHour <= 11)
     greetingPara.textContent = "Good morning.";
   else if (currentHour >= 12 && currentHour <= 15)
     greetingPara.textContent = "Good afternoon.";
   else greetingPara.textContent = "Good evening.";
 
-  switch (new Date().getDay()) {
+  switch (6) {
     case 0:
-      addPara();
+      if (currentHour >= 0 && currentHour <= 18) show_image_and_text();
+      else {
+        tableTitle.textContent = "Get set for tomorrow";
+        showTodayTimeTable(days["monday"]);
+      }
       break;
     case 1:
-      showTodayTimeTable(days["monday"]);
+      if (currentHour >= 0 && currentHour <= 16) {
+        tableTitle.textContent = "Today";
+        showTodayTimeTable(days["monday"]);
+      } else {
+        tableTitle.textContent = "Tomorrow";
+        showTodayTimeTable(days["tuesday"]);
+      }
       break;
     case 2:
-      showTodayTimeTable(days["tuesday"]);
+      if (currentHour >= 0 && currentHour <= 16) {
+        tableTitle.textContent = "Today";
+        showTodayTimeTable(days["tuesday"]);
+      } else {
+        tableTitle.textContent = "Tomorrow";
+        showTodayTimeTable(days["wednesday"]);
+      }
       break;
     case 3:
-      showTodayTimeTable(days["wednesday"]);
+      if (currentHour >= 0 && currentHour <= 16) {
+        tableTitle.textContent = "Today";
+        showTodayTimeTable(days["wednesday"]);
+      } else {
+        tableTitle.textContent = "Tomorrow";
+        showTodayTimeTable(days["thursday"]);
+      }
       break;
     case 4:
-      showTodayTimeTable(days["thursday"]);
+      if (currentHour >= 0 && currentHour <= 16) {
+        tableTitle.textContent = "Today";
+        showTodayTimeTable(days["thursday"]);
+      } else {
+        tableTitle.textContent = "Tomorrow";
+        showTodayTimeTable(days["friday"]);
+      }
       break;
     case 5:
-      showTodayTimeTable(days["friday"]);
+      if (currentHour >= 0 && currentHour <= 16) {
+        tableTitle.textContent = "Today";
+        showTodayTimeTable(days["friday"]);
+      } else {
+        table.style.display = "none";
+        tableTitle.textContent = "Calm down! It's weekend tomorrow 🎉";
+      }
       break;
     case 6:
-      addPara();
+      show_image_and_text();
   }
 };
 
