@@ -87,5 +87,17 @@ hr {
 }
 .today__time__table p {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
+}
+.today__time__table p span {
+  padding: 3px 10px;
+  border-radius: 40px;
+  background-color: #fcbf49;
+}
+.today__time__table .myImage {
+  text-align: center;
+}
+.today__time__table img {
+  max-width: 100%;
+  height: auto;
 }

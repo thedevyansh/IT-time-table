@@ -53,6 +53,20 @@ var days = {
   sunday: [],
 };
 
+const addPara = () => {
+  let todayH2 = document.querySelector(".today h2");
+  let today__time__table = document.querySelector(".today__time__table");
+  let table = document.querySelector("table");
+  const para = document.createElement("p");
+  const span = document.createElement("span");
+
+  todayH2.style.display = "none";
+  table.style.display = "none";
+  span.textContent = "No classes today. Enjoy your day!";
+  para.appendChild(span);
+  today__time__table.appendChild(para);
+};
+
 const showTodayTimeTable = (timetable) => {
   const tbody = document.querySelector("table tbody");
   for (let i = 0; i < 8; i++) {
@@ -79,14 +93,9 @@ const find_week_day = () => {
     greetingPara.textContent = "Good afternoon, budding engineer!";
   else greetingPara.textContent = "Good evening, budding engineer!";
 
-  let today__time__table = document.querySelector(".today__time__table");
-  let table = document.querySelector("table");
-  const para = document.createElement("p");
   switch (new Date().getDay()) {
     case 0:
-      table.style.display = "none";
-      para.textContent = "Yay! No classes today.";
-      today__time__table.appendChild(para);
+      addPara();
       break;
     case 1:
       showTodayTimeTable(days["monday"]);
@@ -104,10 +113,7 @@ const find_week_day = () => {
       showTodayTimeTable(days["friday"]);
       break;
     case 6:
-      table.style.display = "none";
-      para.textContent = "Yay! No classes today.";
-      today__time__table.appendChild(para);
-      break;
+      addPara();
   }
 };
 
