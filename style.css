@@ -85,3 +85,7 @@ hr {
   color: #003049;
   font-weight: 700;
 }
+.today__time__table p {
+  text-align: center;
+  font-size: 1.2rem;
+}
