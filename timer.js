@@ -95,6 +95,16 @@ const showTodayTimeTable = (timetable) => {
   }
 };
 
+const show_ongoing_class_status = (timetable) => {
+  const ongoing__class = document.querySelector(".ongoing__class h3");
+  const currentHour = new Date().getHours();
+  const currentMinute = new Date().getMinutes();
+
+  if (!timetable.length) ongoing__class.textContent = "-";
+
+  // handle the case when non zero timetable is passed for ongoing class status
+};
+
 const find_week_day = () => {
   const greetingPara = document.querySelector(".greeting p");
   const tableTitle = document.querySelector(".today h2");
@@ -107,15 +117,20 @@ const find_week_day = () => {
     greetingPara.textContent = "Good afternoon.";
   else greetingPara.textContent = "Good evening.";
 
-  switch (6) {
+  switch (new Date().getDay()) {
     case 0:
-      if (currentHour >= 0 && currentHour <= 18) show_image_and_text();
-      else {
+      show_ongoing_class_status([]);
+
+      if (currentHour >= 0 && currentHour <= 18) {
+        show_image_and_text();
+      } else {
         tableTitle.textContent = "Get set for tomorrow";
         showTodayTimeTable(days["monday"]);
       }
       break;
     case 1:
+      show_ongoing_class_status(days["monday"]);
+
       if (currentHour >= 0 && currentHour <= 16) {
         tableTitle.textContent = "Today";
         showTodayTimeTable(days["monday"]);
@@ -125,6 +140,8 @@ const find_week_day = () => {
       }
       break;
     case 2:
+      show_ongoing_class_status(days["tuesday"]);
+
       if (currentHour >= 0 && currentHour <= 16) {
         tableTitle.textContent = "Today";
         showTodayTimeTable(days["tuesday"]);
@@ -134,6 +151,8 @@ const find_week_day = () => {
       }
       break;
     case 3:
+      show_ongoing_class_status(days["wednesday"]);
+
       if (currentHour >= 0 && currentHour <= 16) {
         tableTitle.textContent = "Today";
         showTodayTimeTable(days["wednesday"]);
@@ -143,6 +162,8 @@ const find_week_day = () => {
       }
       break;
     case 4:
+      show_ongoing_class_status(days["thursday"]);
+
       if (currentHour >= 0 && currentHour <= 16) {
         tableTitle.textContent = "Today";
         showTodayTimeTable(days["thursday"]);
@@ -152,6 +173,8 @@ const find_week_day = () => {
       }
       break;
     case 5:
+      show_ongoing_class_status(days["friday"]);
+
       if (currentHour >= 0 && currentHour <= 16) {
         tableTitle.textContent = "Today";
         showTodayTimeTable(days["friday"]);
@@ -161,6 +184,7 @@ const find_week_day = () => {
       }
       break;
     case 6:
+      show_ongoing_class_status([]);
       show_image_and_text();
   }
 };
