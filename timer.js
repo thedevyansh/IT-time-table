@@ -97,12 +97,28 @@ const showTodayTimeTable = (timetable) => {
 
 const show_ongoing_class_status = (timetable) => {
   const ongoing__class = document.querySelector(".ongoing__class h3");
-  const currentHour = new Date().getHours();
-  const currentMinute = new Date().getMinutes();
 
   if (!timetable.length) ongoing__class.textContent = "-";
+  else {
+    let startTime = "08:30:00";
+    let endTime = "16:30:00";
 
-  // handle the case when non zero timetable is passed for ongoing class status
+    let currentDate = new Date();
+
+    let startDate = new Date(currentDate.getTime());
+    startDate.setHours(startTime.split(":")[0]);
+    startDate.setMinutes(startTime.split(":")[1]);
+    startDate.setSeconds(startTime.split(":")[2]);
+
+    let endDate = new Date(currentDate.getTime());
+    endDate.setHours(endTime.split(":")[0]);
+    endDate.setMinutes(endTime.split(":")[1]);
+    endDate.setSeconds(endTime.split(":")[2]);
+
+    if (currentDate >= startDate && currentDate <= endDate) {
+      // show current class
+    } else ongoing__class.textContent = "-";
+  }
 };
 
 const find_week_day = () => {
