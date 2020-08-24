@@ -95,28 +95,65 @@ const showTodayTimeTable = (timetable) => {
   }
 };
 
+const compute_start_and_end_time = (currentTime, time) => {
+  let date = new Date(currentTime.getTime());
+  date.setHours(time.split(":")[0]);
+  date.setMinutes(time.split(":")[1]);
+  date.setSeconds(time.split(":")[2]);
+
+  return date;
+};
+
 const show_ongoing_class_status = (timetable) => {
   const ongoing__class = document.querySelector(".ongoing__class h3");
 
   if (!timetable.length) ongoing__class.textContent = "-";
   else {
-    let startTime = "08:30:00";
-    let endTime = "16:30:00";
-
-    let currentDate = new Date();
-
-    let startDate = new Date(currentDate.getTime());
-    startDate.setHours(startTime.split(":")[0]);
-    startDate.setMinutes(startTime.split(":")[1]);
-    startDate.setSeconds(startTime.split(":")[2]);
-
-    let endDate = new Date(currentDate.getTime());
-    endDate.setHours(endTime.split(":")[0]);
-    endDate.setMinutes(endTime.split(":")[1]);
-    endDate.setSeconds(endTime.split(":")[2]);
-
-    if (currentDate >= startDate && currentDate <= endDate) {
-      // show current class
+    if (
+      new Date() >= compute_start_and_end_time(new Date(), "08:30:00") &&
+      new Date() <= compute_start_and_end_time(new Date(), "16:30:00")
+    ) {
+      if (
+        new Date() >= compute_start_and_end_time(new Date(), "08:30:00") &&
+        new Date() <= compute_start_and_end_time(new Date(), "09:24:59")
+      )
+        ongoing__class.textContent = timetable[0].split("  ")[1];
+      else if (
+        new Date() >= compute_start_and_end_time(new Date(), "09:25:00") &&
+        new Date() <= compute_start_and_end_time(new Date(), "10:19:59")
+      )
+        ongoing__class.textContent = timetable[1].split("  ")[1];
+      else if (
+        new Date() >= compute_start_and_end_time(new Date(), "10:40:00") &&
+        new Date() <= compute_start_and_end_time(new Date(), "11:34:59")
+      )
+        ongoing__class.textContent = timetable[2].split("  ")[1];
+      else if (
+        new Date() >= compute_start_and_end_time(new Date(), "11:35:00") &&
+        new Date() <= compute_start_and_end_time(new Date(), "12:29:59")
+      )
+        ongoing__class.textContent = timetable[3].split("  ")[1];
+      else if (
+        new Date() >= compute_start_and_end_time(new Date(), "12:30:00") &&
+        new Date() <= compute_start_and_end_time(new Date(), "13:24:59")
+      )
+        ongoing__class.textContent = timetable[4].split("  ")[1];
+      else if (
+        new Date() >= compute_start_and_end_time(new Date(), "13:45:00") &&
+        new Date() <= compute_start_and_end_time(new Date(), "14:39:59")
+      )
+        ongoing__class.textContent = timetable[5].split("  ")[1];
+      else if (
+        new Date() >= compute_start_and_end_time(new Date(), "14:40:00") &&
+        new Date() <= compute_start_and_end_time(new Date(), "15:34:59")
+      )
+        ongoing__class.textContent = timetable[6].split("  ")[1];
+      else if (
+        new Date() >= compute_start_and_end_time(new Date(), "15:35:00") &&
+        new Date() <= compute_start_and_end_time(new Date(), "16:30:00")
+      )
+        ongoing__class.textContent = timetable[7].split("  ")[1];
+      else ongoing__class.textContent = "It's a break.";
     } else ongoing__class.textContent = "-";
   }
 };
