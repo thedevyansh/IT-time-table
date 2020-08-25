@@ -101,3 +101,13 @@ hr {
   max-width: 100%;
   height: auto;
 }
+.timer {
+  display: flex;
+}
+.timer div {
+  margin-right: 15px;
+  text-align: center;
+}
+.timer div h5 {
+  color: #d62828;
+}
