@@ -105,9 +105,13 @@ hr {
   display: flex;
 }
 .timer div {
-  margin-right: 15px;
+  margin-right: 20px;
   text-align: center;
 }
 .timer div h5 {
   color: #d62828;
+}
+.timer p {
+  font-size: 1.2rem;
+  margin-top: 15px;
 }
