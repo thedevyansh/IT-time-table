@@ -258,39 +258,43 @@ if (
   new Date() >= compute_start_and_end_time(new Date(), "08:30:00") &&
   new Date() <= compute_start_and_end_time(new Date(), "16:30:00")
 ) {
-  const Timer = document.querySelector(".timer");
-  for (let i = 0; i < 5; i++) {
-    const timerDiv = document.createElement("div");
-    const timerDivh3 = document.createElement("h3");
-    const timerDivh5 = document.createElement("h5");
+  if (new Date() >= compute_start_and_end_time(new Date(), "15:35:00"))
+    create_para_in_timer("This is the last lecture of the day.");
+  else {
+    const Timer = document.querySelector(".timer");
+    for (let i = 0; i < 5; i++) {
+      const timerDiv = document.createElement("div");
+      const timerDivh3 = document.createElement("h3");
+      const timerDivh5 = document.createElement("h5");
 
-    timerDiv.appendChild(timerDivh3);
-    timerDiv.appendChild(timerDivh5);
-    Timer.appendChild(timerDiv);
+      timerDiv.appendChild(timerDivh3);
+      timerDiv.appendChild(timerDivh5);
+      Timer.appendChild(timerDiv);
+    }
+
+    const a = document.querySelectorAll(".timer div h3");
+    const b = document.querySelectorAll(".timer div h5");
+
+    let timerAnimation = setInterval(function () {
+      var distance =
+        new Date("Aug 25, 2020 23:59:00").getTime() - new Date().getTime();
+
+      var hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      a[0].textContent = hours < 10 ? "0" + hours : hours;
+      a[1].textContent = ":";
+      a[2].textContent = minutes < 10 ? "0" + minutes : minutes;
+      a[3].textContent = ":";
+      a[4].textContent = seconds < 10 ? "0" + seconds : seconds;
+      b[0].textContent = "h";
+      b[2].textContent = "m";
+      b[4].textContent = "s";
+    }, 1000);
   }
-
-  const a = document.querySelectorAll(".timer div h3");
-  const b = document.querySelectorAll(".timer div h5");
-
-  let timerAnimation = setInterval(function () {
-    var distance =
-      new Date("Aug 25, 2020 22:00:00").getTime() - new Date().getTime();
-
-    var hours = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    a[0].textContent = hours < 10 ? "0" + hours : hours;
-    a[1].textContent = ":";
-    a[2].textContent = minutes < 10 ? "0" + minutes : minutes;
-    a[3].textContent = ":";
-    a[4].textContent = seconds < 10 ? "0" + seconds : seconds;
-    b[0].textContent = "h";
-    b[2].textContent = "m";
-    b[4].textContent = "s";
-  }, 1000);
 } else if (new Date().getDay() == 0 || new Date().getDay() == 6) {
   create_para_in_timer("No classes today! 🕺");
 } else if (new Date() > compute_start_and_end_time(new Date(), "16:30:00")) {
