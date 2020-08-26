@@ -53,6 +53,8 @@ var days = {
   sunday: [],
 };
 
+// ******************************************************************
+
 const show_image_and_text = () => {
   let todayH2 = document.querySelector(".today h2");
   let today__time__table = document.querySelector(".today__time__table");
@@ -78,6 +80,8 @@ const show_image_and_text = () => {
   today__time__table.appendChild(para);
 };
 
+// ******************************************************************
+
 const showTodayTimeTable = (timetable) => {
   const tbody = document.querySelector("table tbody");
   for (let i = 0; i < 8; i++) {
@@ -95,6 +99,8 @@ const showTodayTimeTable = (timetable) => {
   }
 };
 
+// ******************************************************************
+
 const compute_start_and_end_time = (currentTime, time) => {
   let date = new Date(currentTime.getTime());
   date.setHours(time.split(":")[0]);
@@ -104,6 +110,54 @@ const compute_start_and_end_time = (currentTime, time) => {
   return date;
 };
 
+// ********************************************************************
+
+const display_ongoing_class_name = (timetable) => {
+  const ongoing__class = document.querySelector(".ongoing__class h3");
+  if (
+    new Date() >= compute_start_and_end_time(new Date(), "08:30:00") &&
+    new Date() <= compute_start_and_end_time(new Date(), "09:24:59")
+  ) {
+    ongoing__class.textContent = timetable[0].split("  ")[1];
+  } else if (
+    new Date() >= compute_start_and_end_time(new Date(), "09:25:00") &&
+    new Date() <= compute_start_and_end_time(new Date(), "10:19:59")
+  ) {
+    ongoing__class.textContent = timetable[1].split("  ")[1];
+  } else if (
+    new Date() >= compute_start_and_end_time(new Date(), "10:40:00") &&
+    new Date() <= compute_start_and_end_time(new Date(), "11:34:59")
+  ) {
+    ongoing__class.textContent = timetable[2].split("  ")[1];
+  } else if (
+    new Date() >= compute_start_and_end_time(new Date(), "11:35:00") &&
+    new Date() <= compute_start_and_end_time(new Date(), "12:29:59")
+  ) {
+    ongoing__class.textContent = timetable[3].split("  ")[1];
+  } else if (
+    new Date() >= compute_start_and_end_time(new Date(), "12:30:00") &&
+    new Date() <= compute_start_and_end_time(new Date(), "13:24:59")
+  ) {
+    ongoing__class.textContent = timetable[4].split("  ")[1];
+  } else if (
+    new Date() >= compute_start_and_end_time(new Date(), "13:45:00") &&
+    new Date() <= compute_start_and_end_time(new Date(), "14:39:59")
+  ) {
+    ongoing__class.textContent = timetable[5].split("  ")[1];
+  } else if (
+    new Date() >= compute_start_and_end_time(new Date(), "14:40:00") &&
+    new Date() <= compute_start_and_end_time(new Date(), "15:34:59")
+  ) {
+    ongoing__class.textContent = timetable[6].split("  ")[1];
+  } else if (
+    new Date() >= compute_start_and_end_time(new Date(), "15:35:00") &&
+    new Date() <= compute_start_and_end_time(new Date(), "16:30:00")
+  ) {
+    ongoing__class.textContent = timetable[7].split("  ")[1];
+  } else ongoing__class.textContent = "It's a break.";
+};
+// ******************************************************************
+
 const show_ongoing_class_status = (timetable) => {
   const ongoing__class = document.querySelector(".ongoing__class h3");
 
@@ -112,51 +166,13 @@ const show_ongoing_class_status = (timetable) => {
     if (
       new Date() >= compute_start_and_end_time(new Date(), "08:30:00") &&
       new Date() <= compute_start_and_end_time(new Date(), "16:30:00")
-    ) {
-      if (
-        new Date() >= compute_start_and_end_time(new Date(), "08:30:00") &&
-        new Date() <= compute_start_and_end_time(new Date(), "09:24:59")
-      )
-        ongoing__class.textContent = timetable[0].split("  ")[1];
-      else if (
-        new Date() >= compute_start_and_end_time(new Date(), "09:25:00") &&
-        new Date() <= compute_start_and_end_time(new Date(), "10:19:59")
-      )
-        ongoing__class.textContent = timetable[1].split("  ")[1];
-      else if (
-        new Date() >= compute_start_and_end_time(new Date(), "10:40:00") &&
-        new Date() <= compute_start_and_end_time(new Date(), "11:34:59")
-      )
-        ongoing__class.textContent = timetable[2].split("  ")[1];
-      else if (
-        new Date() >= compute_start_and_end_time(new Date(), "11:35:00") &&
-        new Date() <= compute_start_and_end_time(new Date(), "12:29:59")
-      )
-        ongoing__class.textContent = timetable[3].split("  ")[1];
-      else if (
-        new Date() >= compute_start_and_end_time(new Date(), "12:30:00") &&
-        new Date() <= compute_start_and_end_time(new Date(), "13:24:59")
-      )
-        ongoing__class.textContent = timetable[4].split("  ")[1];
-      else if (
-        new Date() >= compute_start_and_end_time(new Date(), "13:45:00") &&
-        new Date() <= compute_start_and_end_time(new Date(), "14:39:59")
-      )
-        ongoing__class.textContent = timetable[5].split("  ")[1];
-      else if (
-        new Date() >= compute_start_and_end_time(new Date(), "14:40:00") &&
-        new Date() <= compute_start_and_end_time(new Date(), "15:34:59")
-      )
-        ongoing__class.textContent = timetable[6].split("  ")[1];
-      else if (
-        new Date() >= compute_start_and_end_time(new Date(), "15:35:00") &&
-        new Date() <= compute_start_and_end_time(new Date(), "16:30:00")
-      )
-        ongoing__class.textContent = timetable[7].split("  ")[1];
-      else ongoing__class.textContent = "It's a break.";
-    } else ongoing__class.textContent = "-";
+    )
+      display_ongoing_class_name(timetable);
+    else ongoing__class.textContent = "-";
   }
 };
+
+// ******************************************************************
 
 const find_week_day = () => {
   const greetingPara = document.querySelector(".greeting p");
@@ -244,6 +260,8 @@ const find_week_day = () => {
 
 find_week_day();
 
+// ******************************************************************
+
 function create_para_in_timer(string) {
   const Timer = document.querySelector(".timer");
   const timepara = document.createElement("p");
@@ -252,49 +270,55 @@ function create_para_in_timer(string) {
   Timer.appendChild(timepara);
 }
 
+// ******************************************************************
+
+const timerFunction = () => {
+  let timerAnimation = setInterval(function () {
+    var distance =
+      new Date("Aug 26, 2020 18:20:00").getTime() - new Date().getTime();
+
+    var hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    a[0].textContent = hours < 10 ? "0" + hours : hours;
+    a[1].textContent = ":";
+    a[2].textContent = minutes < 10 ? "0" + minutes : minutes;
+    a[3].textContent = ":";
+    a[4].textContent = seconds < 10 ? "0" + seconds : seconds;
+    b[0].textContent = "h";
+    b[2].textContent = "m";
+    b[4].textContent = "s";
+  }, 1000);
+};
+
+// ******************************************************************
+
 if (
   new Date().getDay() > 0 &&
   new Date().getDay() < 6 &&
   new Date() >= compute_start_and_end_time(new Date(), "08:30:00") &&
   new Date() <= compute_start_and_end_time(new Date(), "16:30:00")
 ) {
-  if (new Date() >= compute_start_and_end_time(new Date(), "15:35:00"))
-    create_para_in_timer("This is the last lecture of the day.");
-  else {
-    const Timer = document.querySelector(".timer");
+  if (new Date() <= compute_start_and_end_time(new Date(), "15:35:00")) {
+    var Timer = document.querySelector(".timer");
     for (let i = 0; i < 5; i++) {
-      const timerDiv = document.createElement("div");
-      const timerDivh3 = document.createElement("h3");
-      const timerDivh5 = document.createElement("h5");
+      var timerDiv = document.createElement("div");
+      var timerDivh3 = document.createElement("h3");
+      var timerDivh5 = document.createElement("h5");
 
       timerDiv.appendChild(timerDivh3);
       timerDiv.appendChild(timerDivh5);
       Timer.appendChild(timerDiv);
     }
 
-    const a = document.querySelectorAll(".timer div h3");
-    const b = document.querySelectorAll(".timer div h5");
+    var a = document.querySelectorAll(".timer div h3");
+    var b = document.querySelectorAll(".timer div h5");
 
-    let timerAnimation = setInterval(function () {
-      var distance =
-        new Date("Aug 25, 2020 23:59:00").getTime() - new Date().getTime();
-
-      var hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      a[0].textContent = hours < 10 ? "0" + hours : hours;
-      a[1].textContent = ":";
-      a[2].textContent = minutes < 10 ? "0" + minutes : minutes;
-      a[3].textContent = ":";
-      a[4].textContent = seconds < 10 ? "0" + seconds : seconds;
-      b[0].textContent = "h";
-      b[2].textContent = "m";
-      b[4].textContent = "s";
-    }, 1000);
-  }
+    timerFunction();
+  } else create_para_in_timer("This is the last lecture of the day.");
 } else if (new Date().getDay() == 0 || new Date().getDay() == 6) {
   create_para_in_timer("No classes today! 🕺");
 } else if (new Date() > compute_start_and_end_time(new Date(), "16:30:00")) {
