@@ -4,50 +4,50 @@ var days = {
     "09:25 - 10:20  JP-P (Mr. Rajesh Ranjan)",
     "10:40 - 11:35  COA-L (Dr. Priyanka Ahlawat)",
     "11:35 - 12:30  JP-L (Ms. Smruti)",
-    "12:30 - 01:25  -",
-    "01:45 - 02:40  -",
-    "02:40 - 03:35  MA-T",
-    "03:35 - 04:30  DS-T",
+    "12:30 - 13:25  -",
+    "13:45 - 14:40  -",
+    "14:40 - 15:35  MA-T",
+    "15:35 - 16:30  DS-T",
   ],
   tuesday: [
     "08:30 - 09:25  DS-P (Ms. Ruby)",
     "09:25 - 10:20  DS-P (Ms. Ruby)",
     "10:40 - 11:35  DAA-P (Dr. Priyanka Ahlawat)",
     "11:35 - 12:30  DAA-P (Dr. Priyanka Ahlawat)",
-    "12:30 - 01:25  -",
-    "01:45 - 02:40  MA-L (Dr. Smita Jaiswal)",
-    "02:40 - 03:35  COA-L (Dr. Priyanka Ahlawat)",
-    "03:35 - 04:30  DAA-L (Dr. Santosh Kumar)",
+    "12:30 - 13:25  -",
+    "13:45 - 14:40  MA-L (Dr. Smita Jaiswal)",
+    "14:40 - 15:35  COA-L (Dr. Priyanka Ahlawat)",
+    "15:35 - 16:30  DAA-L (Dr. Santosh Kumar)",
   ],
   wednesday: [
     "08:30 - 09:25  DAA-T",
     "09:25 - 10:20  -",
     "10:40 - 11:35  -",
     "11:35 - 12:30  DS-L (Ms. Ruby)",
-    "12:30 - 01:25  JP-L (Ms. Smruti)",
-    "01:45 - 02:40  -",
-    "02:40 - 03:35  SE-L (Anamika)",
-    "03:35 - 04:30  COA-L (Dr. Priyanka Ahlawat)",
+    "12:30 - 13:25  JP-L (Ms. Smruti)",
+    "13:45 - 14:40  -",
+    "14:40 - 15:35  SE-L (Anamika)",
+    "15:35 - 16:30  COA-L (Dr. Priyanka Ahlawat)",
   ],
   thursday: [
     "08:30 - 09:25  SE-L (Anamika)",
     "09:25 - 10:20  MA-L (Dr. Smita Jaiswal)",
     "10:40 - 11:35  -",
     "11:35 - 12:30  -",
-    "12:30 - 01:25  -",
-    "01:45 - 02:40  DS-L (Ms. Ruby)",
-    "02:40 - 03:35  DAA-L (Dr. Santosh Kumar)",
-    "03:35 - 04:30  SE-L (Anamika)",
+    "12:30 - 13:25  -",
+    "13:45 - 14:40  DS-L (Ms. Ruby)",
+    "14:40 - 15:35  DAA-L (Dr. Santosh Kumar)",
+    "15:35 - 16:30  SE-L (Anamika)",
   ],
   friday: [
     "08:30 - 09:25  SE-T",
     "09:25 - 10:20  COA-T",
     "10:40 - 11:35  -",
     "11:35 - 12:30  MA-L (Dr. Smita Jaiswal)",
-    "12:30 - 01:25  DS-L (Ms. Ruby)",
-    "01:45 - 02:40  -",
-    "02:40 - 03:35  JP-L (Ms. Smruti)",
-    "03:35 - 04:30  DAA-L (Dr. Santosh Kumar)",
+    "12:30 - 13:25  DS-L (Ms. Ruby)",
+    "13:45 - 14:40  -",
+    "14:40 - 15:35  JP-L (Ms. Smruti)",
+    "15:35 - 16:30  DAA-L (Dr. Santosh Kumar)",
   ],
   saturday: [],
   sunday: [],
@@ -272,10 +272,9 @@ function create_para_in_timer(string) {
 
 // ******************************************************************
 
-const timerFunction = () => {
+const timerFunction = (countdownTime) => {
   let timerAnimation = setInterval(function () {
-    var distance =
-      new Date("Aug 26, 2020 18:20:00").getTime() - new Date().getTime();
+    var distance = new Date(countdownTime).getTime() - new Date().getTime();
 
     var hours = Math.floor(
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -302,7 +301,7 @@ if (
   new Date() >= compute_start_and_end_time(new Date(), "08:30:00") &&
   new Date() <= compute_start_and_end_time(new Date(), "16:30:00")
 ) {
-  if (new Date() <= compute_start_and_end_time(new Date(), "15:35:00")) {
+  if (new Date() < compute_start_and_end_time(new Date(), "15:35:00")) {
     var Timer = document.querySelector(".timer");
     for (let i = 0; i < 5; i++) {
       var timerDiv = document.createElement("div");
@@ -317,12 +316,79 @@ if (
     var a = document.querySelectorAll(".timer div h3");
     var b = document.querySelectorAll(".timer div h5");
 
-    timerFunction();
+    switch (new Date().getDay()) {
+      case 1:
+        configure_timer(days["monday"]);
+        break;
+      case 2:
+        configure_timer(days["tuesday"]);
+        break;
+      case 3:
+        configure_timer(days["wednesday"]);
+        break;
+      case 4:
+        configure_timer(days["thursday"]);
+        break;
+      case 5:
+        configure_timer(days["friday"]);
+        break;
+    }
   } else create_para_in_timer("This is the last lecture of the day.");
-} else if (new Date().getDay() == 0 || new Date().getDay() == 6) {
+} else if (new Date().getDay() === 0 || new Date().getDay() === 6) {
   create_para_in_timer("No classes today! 🕺");
 } else if (new Date() > compute_start_and_end_time(new Date(), "16:30:00")) {
   create_para_in_timer("All classes are over! 🕺");
 } else {
   create_para_in_timer("First class will begin at 08:30 a.m.");
 }
+
+// ***********************************************************************
+
+const configure_timer = (timetable) => {
+  for (let i = 0; i < 7; i++) {
+    if (
+      new Date() >=
+        compute_start_and_end_time(
+          new Date(),
+          timetable[i].split(" ")[0] + ":00"
+        ) &&
+      new Date() <
+        compute_start_and_end_time(
+          new Date(),
+          timetable[i].split(" ")[2] + ":00"
+        )
+    ) {
+      configure_timer_in_break(i + 1, timetable);
+    }
+  }
+  if (
+    new Date() >= compute_start_and_end_time(new Date(), "10:20:00") &&
+    new Date() < compute_start_and_end_time(new Date(), "10:40:00")
+  ) {
+    configure_timer_in_break(2, timetable);
+  } else if (
+    new Date() >= compute_start_and_end_time(new Date(), "13:25:00") &&
+    new Date() < compute_start_and_end_time(new Date(), "13:45:00")
+  ) {
+    configure_timer_in_break(5, timetable);
+  }
+};
+
+// ********************************************************************
+
+const configure_timer_in_break = (val, timetable) => {
+  var k, flag;
+
+  for (k = val; k < 8; k++) {
+    if (timetable[k].split("  ")[1] !== "-") {
+      flag = k;
+      break;
+    }
+  }
+  timerFunction(
+    compute_start_and_end_time(
+      new Date(),
+      timetable[flag].split(" ")[0] + ":00"
+    )
+  );
+};
