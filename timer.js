@@ -26,18 +26,18 @@ var days = {
     "11:35 - 12:30  DS-L (Ms. Ruby)",
     "12:30 - 13:25  JP-L (Ms. Smruti)",
     "13:45 - 14:40  -",
-    "14:40 - 15:35  SE-L (Anamika)",
+    "14:40 - 15:35  SE-L (Ms. Anamika)",
     "15:35 - 16:30  COA-L (Dr. Priyanka Ahlawat)",
   ],
   thursday: [
-    "08:30 - 09:25  SE-L (Anamika)",
+    "08:30 - 09:25  SE-L (Ms. Anamika)",
     "09:25 - 10:20  MA-L (Dr. Smita Jaiswal)",
     "10:40 - 11:35  -",
     "11:35 - 12:30  -",
     "12:30 - 13:25  -",
     "13:45 - 14:40  DS-L (Ms. Ruby)",
     "14:40 - 15:35  DAA-L (Dr. Santosh Kumar)",
-    "15:35 - 16:30  SE-L (Anamika)",
+    "15:35 - 16:30  SE-L (Ms. Anamika)",
   ],
   friday: [
     "08:30 - 09:25  SE-T",
@@ -408,7 +408,7 @@ if (
 } else if (new Date().getDay() === 0 || new Date().getDay() === 6) {
   create_para_in_timer("No classes today! 🕺");
 } else if (new Date() > compute_start_and_end_time(new Date(), "16:30:00")) {
-  create_para_in_timer("All classes are over! 🕺");
+  create_para_in_timer("All classes are over for today! 🕺");
 } else {
   create_para_in_timer("First class will begin at 08:30 a.m. 📚");
 }
