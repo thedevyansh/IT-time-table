@@ -26,7 +26,8 @@ body {
 .greeting,
 .ongoing__class,
 .next__class,
-.time__table {
+.time__table,
+.subject__codes {
   width: 95%;
   margin: 0 auto;
   margin-top: 20px;
@@ -35,7 +36,8 @@ body {
   font-size: 1.7rem;
 }
 .ongoing__class h2,
-.next__class h2 {
+.next__class h2,
+.subject__codes h2 {
   color: #d62828;
 }
 .ongoing__class h3,
@@ -88,6 +90,7 @@ hr {
 .today__time__table p {
   text-align: center;
   font-size: 1rem;
+  margin-bottom: 50px;
 }
 .today__time__table p span {
   padding: 3px 10px;
@@ -114,4 +117,41 @@ hr {
 .timer p {
   font-size: 1.2rem;
   margin-top: 15px;
+}
+.subject__codes {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.subject__codes h2 {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.subject__codes .separator {
+  width: 50px;
+  height: 5px;
+}
+.subject__codes__flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+.subject__codes__flex > div {
+  background-color: #d9d1a9;
+  margin: 10px 10px 0 0;
+  width: 200px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.subject__codes__flex div h6:nth-child(1),
+.subject__codes__flex div h6:nth-child(3) {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+@media only screen and (max-width: 442px) {
+  .subject__codes__flex {
+    justify-content: center;
+  }
+  .subject__codes__flex > div { 
+    margin: 10px;
+  }
 }
