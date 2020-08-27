@@ -290,6 +290,15 @@ const timerFunction = (countdownTime) => {
     b[0].textContent = "h";
     b[2].textContent = "m";
     b[4].textContent = "s";
+
+    if (distance < 0) {
+      clearInterval(timerAnimation);
+      let divs_in_timer = document.querySelectorAll(".timer div");
+      for (let m = 0; m < divs_in_timer.length; m++) {
+        divs_in_timer[m].style.display = "none";
+      }
+      create_para_in_timer("Please refresh the page. 🔄");
+    }
   }, 1000);
 };
 
@@ -394,12 +403,12 @@ if (
     }
   } else {
     highlight_current_class(7);
-    create_para_in_timer("This is the last lecture of the day.");
+    create_para_in_timer("This is the last lecture of the day. 🕺");
   }
 } else if (new Date().getDay() === 0 || new Date().getDay() === 6) {
   create_para_in_timer("No classes today! 🕺");
 } else if (new Date() > compute_start_and_end_time(new Date(), "16:30:00")) {
   create_para_in_timer("All classes are over! 🕺");
 } else {
-  create_para_in_timer("First class will begin at 08:30 a.m.");
+  create_para_in_timer("First class will begin at 08:30 a.m. 📚");
 }
