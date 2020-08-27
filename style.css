@@ -124,7 +124,7 @@ hr {
 }
 .subject__codes h2 {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 .subject__codes .separator {
   width: 50px;
@@ -147,11 +147,40 @@ hr {
   font-weight: 700;
   font-size: 0.8rem;
 }
+@media only screen and (max-width: 500px) {
+  .header h2 {
+    font-size: 1.5rem;
+  }
+  .header p,
+  .timer div h5 {
+    font-size: 1.1rem;
+  }
+  .ongoing__class h2,
+  .next__class h2,
+  .today h2 {
+    font-size: 1.3rem;
+  }
+  .separator {
+    width: 50px;
+    height: 5px;
+  }
+  .greeting p {
+    font-size: 1.4rem;
+  }
+  .ongoing__class h3,
+  .timer div h3 {
+    font-size: 1.8rem;
+  }
+  .table thead tr th,
+  .table tbody tr td {
+    font-size: 1rem;
+  }
+}
 @media only screen and (max-width: 442px) {
   .subject__codes__flex {
     justify-content: center;
   }
-  .subject__codes__flex > div { 
+  .subject__codes__flex > div {
     margin: 10px;
   }
 }

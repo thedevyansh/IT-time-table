@@ -181,10 +181,10 @@ const find_week_day = () => {
   let currentHour = new Date().getHours();
 
   if (currentHour >= 0 && currentHour <= 11)
-    greetingPara.textContent = "Good morning.";
+    greetingPara.textContent = "Good morning!";
   else if (currentHour >= 12 && currentHour <= 15)
-    greetingPara.textContent = "Good afternoon.";
-  else greetingPara.textContent = "Good evening.";
+    greetingPara.textContent = "Good afternoon!";
+  else greetingPara.textContent = "Good evening!";
 
   switch (new Date().getDay()) {
     case 0:
