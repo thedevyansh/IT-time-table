@@ -295,6 +295,13 @@ const timerFunction = (countdownTime) => {
 
 // ******************************************************************
 
+const highlight_current_class = (i) => {
+  var trarray = document.querySelectorAll("tbody tr");
+
+  trarray[i].style.backgroundColor = "#d9d1a9";
+};
+// ******************************************************************
+
 const configure_timer = (timetable) => {
   for (let i = 0; i < 7; i++) {
     if (
@@ -309,6 +316,7 @@ const configure_timer = (timetable) => {
           timetable[i].split(" ")[2] + ":00"
         )
     ) {
+      highlight_current_class(i);
       configure_timer_in_subcomponent(i + 1, timetable);
     }
   }
@@ -384,7 +392,10 @@ if (
         configure_timer(days["friday"]);
         break;
     }
-  } else create_para_in_timer("This is the last lecture of the day.");
+  } else {
+    highlight_current_class(7);
+    create_para_in_timer("This is the last lecture of the day.");
+  }
 } else if (new Date().getDay() === 0 || new Date().getDay() === 6) {
   create_para_in_timer("No classes today! 🕺");
 } else if (new Date() > compute_start_and_end_time(new Date(), "16:30:00")) {
