@@ -295,6 +295,57 @@ const timerFunction = (countdownTime) => {
 
 // ******************************************************************
 
+const configure_timer = (timetable) => {
+  for (let i = 0; i < 7; i++) {
+    if (
+      new Date() >=
+        compute_start_and_end_time(
+          new Date(),
+          timetable[i].split(" ")[0] + ":00"
+        ) &&
+      new Date() <
+        compute_start_and_end_time(
+          new Date(),
+          timetable[i].split(" ")[2] + ":00"
+        )
+    ) {
+      configure_timer_in_subcomponent(i + 1, timetable);
+    }
+  }
+  if (
+    new Date() >= compute_start_and_end_time(new Date(), "10:20:00") &&
+    new Date() < compute_start_and_end_time(new Date(), "10:40:00")
+  ) {
+    configure_timer_in_subcomponent(2, timetable);
+  } else if (
+    new Date() >= compute_start_and_end_time(new Date(), "13:25:00") &&
+    new Date() < compute_start_and_end_time(new Date(), "13:45:00")
+  ) {
+    configure_timer_in_subcomponent(5, timetable);
+  }
+};
+
+// ********************************************************************
+
+const configure_timer_in_subcomponent = (val, timetable) => {
+  var k, flag;
+
+  for (k = val; k < 8; k++) {
+    if (timetable[k].split("  ")[1] !== "-") {
+      flag = k;
+      break;
+    }
+  }
+  timerFunction(
+    compute_start_and_end_time(
+      new Date(),
+      timetable[flag].split(" ")[0] + ":00"
+    )
+  );
+};
+
+// *********************************************************************
+
 if (
   new Date().getDay() > 0 &&
   new Date().getDay() < 6 &&
@@ -341,54 +392,3 @@ if (
 } else {
   create_para_in_timer("First class will begin at 08:30 a.m.");
 }
-
-// ***********************************************************************
-
-const configure_timer = (timetable) => {
-  for (let i = 0; i < 7; i++) {
-    if (
-      new Date() >=
-        compute_start_and_end_time(
-          new Date(),
-          timetable[i].split(" ")[0] + ":00"
-        ) &&
-      new Date() <
-        compute_start_and_end_time(
-          new Date(),
-          timetable[i].split(" ")[2] + ":00"
-        )
-    ) {
-      configure_timer_in_break(i + 1, timetable);
-    }
-  }
-  if (
-    new Date() >= compute_start_and_end_time(new Date(), "10:20:00") &&
-    new Date() < compute_start_and_end_time(new Date(), "10:40:00")
-  ) {
-    configure_timer_in_break(2, timetable);
-  } else if (
-    new Date() >= compute_start_and_end_time(new Date(), "13:25:00") &&
-    new Date() < compute_start_and_end_time(new Date(), "13:45:00")
-  ) {
-    configure_timer_in_break(5, timetable);
-  }
-};
-
-// ********************************************************************
-
-const configure_timer_in_break = (val, timetable) => {
-  var k, flag;
-
-  for (k = val; k < 8; k++) {
-    if (timetable[k].split("  ")[1] !== "-") {
-      flag = k;
-      break;
-    }
-  }
-  timerFunction(
-    compute_start_and_end_time(
-      new Date(),
-      timetable[flag].split(" ")[0] + ":00"
-    )
-  );
-};
