@@ -1,53 +1,53 @@
 var days = {
   monday: [
-    "08:30 - 09:25  JP-P (Mr. Rajesh Ranjan)",
-    "09:25 - 10:20  JP-P (Mr. Rajesh Ranjan)",
-    "10:40 - 11:35  COA-L (Dr. Priyanka Ahlawat)",
-    "11:35 - 12:30  JP-L (Ms. Smruti)",
-    "12:30 - 13:25  -",
-    "13:45 - 14:40  -",
-    "14:40 - 15:35  MA-T",
-    "15:35 - 16:30  DS-T",
-  ],
-  tuesday: [
-    "08:30 - 09:25  DS-P (Ms. Ruby)",
-    "09:25 - 10:20  DS-P (Ms. Ruby)",
-    "10:40 - 11:35  DAA-P (Dr. Priyanka Ahlawat)",
-    "11:35 - 12:30  DAA-P (Dr. Priyanka Ahlawat)",
-    "12:30 - 13:25  -",
-    "13:45 - 14:40  MA-L (Dr. Smita Jaiswal)",
-    "14:40 - 15:35  COA-L (Dr. Priyanka Ahlawat)",
-    "15:35 - 16:30  DAA-L (Dr. Santosh Kumar)",
-  ],
-  wednesday: [
-    "08:30 - 09:25  DAA-T",
-    "09:25 - 10:20  -",
-    "10:40 - 11:35  -",
-    "11:35 - 12:30  DS-L (Ms. Ruby)",
-    "12:30 - 13:25  JP-L (Ms. Smruti)",
-    "13:45 - 14:40  -",
-    "14:40 - 15:35  SE-L (Ms. Anamika)",
-    "15:35 - 16:30  COA-L (Dr. Priyanka Ahlawat)",
-  ],
-  thursday: [
-    "08:30 - 09:25  SE-L (Ms. Anamika)",
-    "09:25 - 10:20  MA-L (Dr. Smita Jaiswal)",
-    "10:40 - 11:35  -",
+    "08:30 - 09:25  SVV-P (Mr. X)",
+    "09:25 - 10:20  SVV-P (Mr. X)",
+    "10:40 - 11:35  PE I-L (Prof. J.K. Chhabra)",
     "11:35 - 12:30  -",
     "12:30 - 13:25  -",
-    "13:45 - 14:40  DS-L (Ms. Ruby)",
-    "14:40 - 15:35  DAA-L (Dr. Santosh Kumar)",
-    "15:35 - 16:30  SE-L (Ms. Anamika)",
+    "13:45 - 14:40  OS-L (Dr. Priyanka Ahlawat)",
+    "14:40 - 15:35  CN-L (Dr. B.B. Gupta)",
+    "15:35 - 16:30  CS-L (Ms. Sonam)",
+  ],
+  tuesday: [
+    "08:30 - 09:25  SVV-L (Ms. Ruby)",
+    "09:25 - 10:20  -",
+    "10:40 - 11:35  PE II-L (Prof. R.K. Aggarwal)",
+    "11:35 - 12:30  CS-P (Mr. Mukesh Verma)",
+    "12:30 - 13:25  CS-P (Mr. Mukesh Verma)",
+    "13:45 - 14:40  -",
+    "14:40 - 15:35  CN-L (Dr. B.B. Gupta)",
+    "15:35 - 16:30  OS-L (Dr. Priyanka Ahlawat)",
+  ],
+  wednesday: [
+    "08:30 - 09:25  CS-L (Ms. Sonam)",
+    "09:25 - 10:20  SVV-L (Ms. Ruby)",
+    "10:40 - 11:35  OS-L (Dr. Priyanka Ahlawat)",
+    "11:35 - 12:30  OS-T",
+    "12:30 - 13:25  PE II-T",
+    "13:45 - 14:40  -",
+    "14:40 - 15:35  CN-P (Mr. X)",
+    "15:35 - 16:30  CN-P (Mr. X)",
+  ],
+  thursday: [
+    "08:30 - 09:25  -",
+    "09:25 - 10:20  -",
+    "10:40 - 11:35  PE II-L (Prof. R.K. Aggarwal)",
+    "11:35 - 12:30  CN-L (Dr. B.B. Gupta)",
+    "12:30 - 13:25  PE I-L (Prof. J.K. Chhabra)",
+    "13:45 - 14:40  -",
+    "14:40 - 15:35  CS-L (Ms. Sonam)",
+    "15:35 - 16:30  SVV-L (Ms. Ruby)",
   ],
   friday: [
-    "08:30 - 09:25  SE-T",
-    "09:25 - 10:20  COA-T",
-    "10:40 - 11:35  -",
-    "11:35 - 12:30  MA-L (Dr. Smita Jaiswal)",
-    "12:30 - 13:25  DS-L (Ms. Ruby)",
+    "08:30 - 09:25  PE I-P (Prof. J.K. Chhabra)",
+    "09:25 - 10:20  PE I-P (Prof. J.K. Chhabra)",
+    "10:40 - 11:35  OS-P (Mr. X)",
+    "11:35 - 12:30  OS-P (Mr. X)",
+    "12:30 - 13:25  PE II-L (Prof. R.K. Aggarwal)",
     "13:45 - 14:40  -",
-    "14:40 - 15:35  JP-L (Ms. Smruti)",
-    "15:35 - 16:30  DAA-L (Dr. Santosh Kumar)",
+    "14:40 - 15:35  -",
+    "15:35 - 16:30  PE I-L (Prof. J.K. Chhabra)",
   ],
   saturday: [],
   sunday: [],
@@ -410,5 +410,9 @@ if (
 } else if (new Date() > compute_start_and_end_time(new Date(), "16:30:00")) {
   create_para_in_timer("All classes are over for today! 🕺");
 } else {
-  create_para_in_timer("First class will begin at 08:30 a.m. 📚");
+  if (new Date().getDay() === 4) {
+    create_para_in_timer("First class will begin at 10:40 a.m. 📚")
+  } else {
+    create_para_in_timer("First class will begin at 08:30 a.m. 📚");
+  }
 }
