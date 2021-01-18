@@ -1,13 +1,13 @@
 var days = {
   monday: [
-    "08:30 - 09:25  SVV-P (Mr. X)",
-    "09:25 - 10:20  SVV-P (Mr. X)",
+    "08:30 - 09:25  SVV-P (Ms. Ruby)",
+    "09:25 - 10:20  SVV-P (Ms. Ruby)",
     "10:40 - 11:35  PE I-L (Prof. J.K. Chhabra)",
-    "11:35 - 12:30  -",
-    "12:30 - 13:25  -",
-    "13:45 - 14:40  OS-L (Dr. Priyanka Ahlawat)",
+    "11:35 - 12:30  OS-L (Dr. Priyanka Ahlawat)",
+    "12:30 - 13:25  CS-L (Ms. Sonam)",
+    "13:45 - 14:40  -",
     "14:40 - 15:35  -",
-    "15:35 - 16:30  CS-L (Ms. Sonam)",
+    "15:35 - 16:30  -",
   ],
   tuesday: [
     "08:30 - 09:25  SVV-L (Ms. Ruby)",
