@@ -5,16 +5,16 @@ var days = {
     "10:40 - 11:35  PE I-L (Prof. J.K. Chhabra)",
     "11:35 - 12:30  OS-L (Dr. Priyanka Ahlawat)",
     "12:30 - 13:25  CS-L (Ms. Sonam)",
-    "13:45 - 14:40  -",
-    "14:40 - 15:35  -",
-    "15:35 - 16:30  -",
+    "13:45 - 14:40  PE II-L (Prof. R.K. Aggarwal)",
+    "14:40 - 15:35  CS-P (Mr. Mukesh Verma)",
+    "15:35 - 16:30  CS-P (Mr. Mukesh Verma)",
   ],
   tuesday: [
     "08:30 - 09:25  SVV-L (Ms. Ruby)",
     "09:25 - 10:20  -",
     "10:40 - 11:35  PE II-L (Prof. R.K. Aggarwal)",
-    "11:35 - 12:30  CS-P (Mr. Mukesh Verma)",
-    "12:30 - 13:25  CS-P (Mr. Mukesh Verma)",
+    "11:35 - 12:30  -",
+    "12:30 - 13:25  -",
     "13:45 - 14:40  -",
     "14:40 - 15:35  CN-L (Dr. B.B. Gupta)",
     "15:35 - 16:30  OS-L (Dr. Priyanka Ahlawat)",
@@ -40,12 +40,12 @@ var days = {
     "15:35 - 16:30  SVV-L (Ms. Ruby)",
   ],
   friday: [
-    "08:30 - 09:25  PE I-P (Prof. J.K. Chhabra)",
-    "09:25 - 10:20  PE I-P (Prof. J.K. Chhabra)",
+    "08:30 - 09:25  -",
+    "09:25 - 10:20  -",
     "10:40 - 11:35  OS-P (Dr. Priyanka Ahlawat)",
     "11:35 - 12:30  OS-P (Dr. Priyanka Ahlawat)",
     "12:30 - 13:25  CN-L (Dr. B.B. Gupta)",
-    "13:45 - 14:40  PE II-L (Prof. R.K. Aggarwal)",
+    "13:45 - 14:40  -",
     "14:40 - 15:35  -",
     "15:35 - 16:30  PE I-L (Prof. J.K. Chhabra)",
   ],
@@ -410,7 +410,7 @@ if (
 } else if (new Date() > compute_start_and_end_time(new Date(), "16:30:00")) {
   create_para_in_timer("All classes are over for today! 🕺");
 } else {
-  if (new Date().getDay() === 4) {
+  if (new Date().getDay() === 4 || new Date().getDay() === 5) {
     create_para_in_timer("First class will begin at 10:40 a.m. 📚")
   } else {
     create_para_in_timer("First class will begin at 08:30 a.m. 📚");
