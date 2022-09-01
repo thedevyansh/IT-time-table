@@ -35,9 +35,9 @@ var days = {
     '10:40 - 11:35  Business Management(T) (Dr. Vikas Choudhary); Office',
     '11:35 - 12:30  Metals and Alloys; LHC 205',
     '12:30 - 13:25  -',
-    '13:45 - 14:40  Machine Learning (Dr. RK Aggarwal); AB 102',
-    '14:40 - 15:35  Advanced DSA (Dr. Santosh Kumar); AB 102',
-    '15:35 - 16:30  Game Theory and Applications; AB 102',
+    '13:45 - 14:40  Machine Learning (Dr. RK Aggarwal); E 101',
+    '14:40 - 15:35  Advanced DSA (Dr. Santosh Kumar); E 101',
+    '15:35 - 16:30  Game Theory and Applications; E 101',
   ],
   friday: [
     '08:30 - 09:25  Human Computer Interaction (Ms. Ruby Chauhan); L3',
@@ -54,14 +54,14 @@ var days = {
 };
 
 var dayMap = {
-  0: "sunday",
-  1: "monday",
-  2: "tuesday",
-  3: "wednesday",
-  4: "thursday",
-  5: "friday",
-  6: "saturday"
-}
+  0: 'sunday',
+  1: 'monday',
+  2: 'tuesday',
+  3: 'wednesday',
+  4: 'thursday',
+  5: 'friday',
+  6: 'saturday',
+};
 
 // ******************************************************************
 
@@ -358,7 +358,10 @@ const configure_timer_in_subcomponent = (val, timetable) => {
   var k, flag;
 
   for (k = val; k < 8; k++) {
-    if (timetable[k].split('  ')[1] !== '-') {
+    if (
+      timetable[k].split('  ')[1] !== '-' &&
+      timetable[k].split('  ')[1] !== timetable[k - 1].split('  ')[1]
+    ) {
       flag = k;
       break;
     }
