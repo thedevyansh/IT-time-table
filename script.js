@@ -81,7 +81,7 @@ const show_image_and_text = () => {
   todayH2.style.display = 'none';
   table.style.display = 'none';
 
-  span.textContent = 'No classes today. Enjoy your day!';
+  span.textContent = 'Enjoy your day 🪩';
 
   div.appendChild(img);
   today__time__table.appendChild(div);
@@ -419,7 +419,7 @@ if (
     create_para_in_timer('This is the last lecture of the day. 🕺');
   }
 } else if (new Date().getDay() === 0 || new Date().getDay() === 6) {
-  create_para_in_timer('No classes today! 🕺');
+  create_para_in_timer('No classes today.');
 } else if (new Date() > compute_start_and_end_time(new Date(), '16:30:00')) {
   create_para_in_timer('All classes are over for today! 🕺');
 } else {
