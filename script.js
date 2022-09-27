@@ -173,7 +173,7 @@ const display_ongoing_class_name = timetable => {
     new Date() >= compute_start_and_end_time(new Date(), '16:30:00') &&
     new Date() <= compute_start_and_end_time(new Date(), '17:25:00')
   ) {
-    ongoing__class.textContent = timetable[7].split('  ')[1];
+    ongoing__class.textContent = timetable[8].split('  ')[1];
   } else ongoing__class.textContent = "It's a break.";
 };
 // ******************************************************************
@@ -277,8 +277,6 @@ const find_week_day = () => {
       show_image_and_text();
   }
 };
-
-find_week_day();
 
 // ******************************************************************
 
@@ -386,6 +384,8 @@ const configure_timer_in_subcomponent = (val, timetable) => {
 
 // *********************************************************************
 
+find_week_day();
+
 if (
   new Date().getDay() > 0 &&
   new Date().getDay() < 6 &&
@@ -425,12 +425,12 @@ if (
         break;
     }
   } else {
-    highlight_current_class(7);
+    highlight_current_class(8);
     create_para_in_timer('This is the last lecture of the day. 🕺');
   }
 } else if (new Date().getDay() === 0 || new Date().getDay() === 6) {
   create_para_in_timer('No classes today.');
-} else if (new Date() > compute_start_and_end_time(new Date(), '16:30:00')) {
+} else if (new Date() > compute_start_and_end_time(new Date(), '17:25:00')) {
   create_para_in_timer('All classes are over for today! 🕺');
 } else {
   let currentTimeTable = days[dayMap[new Date().getDay()]];
