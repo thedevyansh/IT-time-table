@@ -6,8 +6,9 @@ var days = {
     '11:35 - 12:30  Advanced DSA(P) (Dr. Santosh Kumar); LAB 4',
     '12:30 - 13:25  -',
     '13:45 - 14:40  Business Management (Dr. Geeta Sachdeva); L3',
-    '14:40 - 15:35  Game Theory and Applications; L3',
-    '15:35 - 16:30  Machine Learning (Dr. RK Aggarwal); L3',
+    '14:40 - 15:35  Machine Learning (Dr. RK Aggarwal); L3',
+    '15:35 - 16:30  Game Theory and Applications; L3',
+    '16:30 - 17:25  Game Theory and Applications; L3',
   ],
   tuesday: [
     '08:30 - 09:25  -',
@@ -15,9 +16,10 @@ var days = {
     '10:40 - 11:35  -',
     '11:35 - 12:30  Metals and Alloys; LHC 206',
     '12:30 - 13:25  -',
-    '13:45 - 14:40  Game Theory and Applications; LHC 101',
+    '13:45 - 14:40  -',
     '14:40 - 15:35  Human Computer Interaction (Ms. Ruby Chauhan); LHC 101',
     '15:35 - 16:30  Machine Learning (Dr. RK Aggarwal); LHC 101',
+    '16:30 - 17:25  Game Theory and Applications; LHC 105',
   ],
   wednesday: [
     '08:30 - 09:25  -',
@@ -28,6 +30,7 @@ var days = {
     '13:45 - 14:40  Human Computer Interaction (Ms. Ruby Chauhan); L1',
     '14:40 - 15:35  Advanced DSA (Dr. Santosh Kumar); L1',
     '15:35 - 16:30  -',
+    '16:30 - 17:25  -',
   ],
   thursday: [
     '08:30 - 09:25  Machine Learning(P) (Dr. RK Aggarwal); LAB 1',
@@ -37,7 +40,8 @@ var days = {
     '12:30 - 13:25  -',
     '13:45 - 14:40  Machine Learning (Dr. RK Aggarwal); E 101',
     '14:40 - 15:35  Advanced DSA (Dr. Santosh Kumar); E 101',
-    '15:35 - 16:30  Game Theory and Applications; E 101',
+    '15:35 - 16:30  -',
+    '16:30 - 17:25  -',
   ],
   friday: [
     '08:30 - 09:25  Human Computer Interaction (Ms. Ruby Chauhan); L3',
@@ -48,6 +52,7 @@ var days = {
     '13:45 - 14:40  -',
     '14:40 - 15:35  -',
     '15:35 - 16:30  -',
+    '16:30 - 17:25  -',
   ],
   saturday: [],
   sunday: [],
@@ -94,7 +99,7 @@ const show_image_and_text = () => {
 
 const showTodayTimeTable = timetable => {
   const tbody = document.querySelector('table tbody');
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 9; i++) {
     const tr = document.createElement('tr');
     const td1 = document.createElement('td');
     const td2 = document.createElement('td');
@@ -161,7 +166,12 @@ const display_ongoing_class_name = timetable => {
     ongoing__class.textContent = timetable[6].split('  ')[1];
   } else if (
     new Date() >= compute_start_and_end_time(new Date(), '15:35:00') &&
-    new Date() <= compute_start_and_end_time(new Date(), '16:30:00')
+    new Date() <= compute_start_and_end_time(new Date(), '16:29:59')
+  ) {
+    ongoing__class.textContent = timetable[7].split('  ')[1];
+  } else if (
+    new Date() >= compute_start_and_end_time(new Date(), '16:30:00') &&
+    new Date() <= compute_start_and_end_time(new Date(), '17:25:00')
   ) {
     ongoing__class.textContent = timetable[7].split('  ')[1];
   } else ongoing__class.textContent = "It's a break.";
@@ -175,7 +185,7 @@ const show_ongoing_class_status = timetable => {
   else {
     if (
       new Date() >= compute_start_and_end_time(new Date(), '08:30:00') &&
-      new Date() <= compute_start_and_end_time(new Date(), '16:30:00')
+      new Date() <= compute_start_and_end_time(new Date(), '17:25:00')
     )
       display_ongoing_class_name(timetable);
     else ongoing__class.textContent = '-';
@@ -210,7 +220,7 @@ const find_week_day = () => {
     case 1:
       show_ongoing_class_status(days['monday']);
 
-      if (currentHour >= 0 && currentHour <= 16) {
+      if (currentHour >= 0 && currentHour <= 17) {
         tableTitle.textContent = 'Today';
         showTodayTimeTable(days['monday']);
       } else {
@@ -221,7 +231,7 @@ const find_week_day = () => {
     case 2:
       show_ongoing_class_status(days['tuesday']);
 
-      if (currentHour >= 0 && currentHour <= 16) {
+      if (currentHour >= 0 && currentHour <= 17) {
         tableTitle.textContent = 'Today';
         showTodayTimeTable(days['tuesday']);
       } else {
@@ -232,7 +242,7 @@ const find_week_day = () => {
     case 3:
       show_ongoing_class_status(days['wednesday']);
 
-      if (currentHour >= 0 && currentHour <= 16) {
+      if (currentHour >= 0 && currentHour <= 17) {
         tableTitle.textContent = 'Today';
         showTodayTimeTable(days['wednesday']);
       } else {
@@ -243,7 +253,7 @@ const find_week_day = () => {
     case 4:
       show_ongoing_class_status(days['thursday']);
 
-      if (currentHour >= 0 && currentHour <= 16) {
+      if (currentHour >= 0 && currentHour <= 17) {
         tableTitle.textContent = 'Today';
         showTodayTimeTable(days['thursday']);
       } else {
@@ -254,7 +264,7 @@ const find_week_day = () => {
     case 5:
       show_ongoing_class_status(days['friday']);
 
-      if (currentHour >= 0 && currentHour <= 16) {
+      if (currentHour >= 0 && currentHour <= 17) {
         tableTitle.textContent = 'Today';
         showTodayTimeTable(days['friday']);
       } else {
@@ -322,7 +332,7 @@ const highlight_current_class = i => {
 // ******************************************************************
 
 const configure_timer = timetable => {
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 8; i++) {
     if (
       new Date() >=
         compute_start_and_end_time(
@@ -357,7 +367,7 @@ const configure_timer = timetable => {
 const configure_timer_in_subcomponent = (val, timetable) => {
   var k, flag;
 
-  for (k = val; k < 8; k++) {
+  for (k = val; k < 9; k++) {
     if (
       timetable[k].split('  ')[1] !== '-' &&
       timetable[k].split('  ')[1] !== timetable[k - 1].split('  ')[1]
@@ -380,9 +390,9 @@ if (
   new Date().getDay() > 0 &&
   new Date().getDay() < 6 &&
   new Date() >= compute_start_and_end_time(new Date(), '08:30:00') &&
-  new Date() <= compute_start_and_end_time(new Date(), '16:30:00')
+  new Date() <= compute_start_and_end_time(new Date(), '17:25:00')
 ) {
-  if (new Date() < compute_start_and_end_time(new Date(), '15:35:00')) {
+  if (new Date() < compute_start_and_end_time(new Date(), '16:30:00')) {
     var Timer = document.querySelector('.timer');
     for (let i = 0; i < 5; i++) {
       var timerDiv = document.createElement('div');
