@@ -116,6 +116,57 @@ const showTodayTimeTable = timetable => {
 
 // ******************************************************************
 
+const showAllTimeTables = () => {
+  const modalBody = document.querySelector('.modal-body');
+
+  for (let i = 1; i <= 5; i++) {
+    const weekDay = document.createElement('p');
+    weekDay.textContent = dayMap[i].toUpperCase();
+    weekDay.style.fontWeight = 'bold';
+    modalBody.appendChild(weekDay);
+
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const trHead = document.createElement('tr');
+    const th1 = document.createElement('th');
+    const th2 = document.createElement('th');
+
+    table.setAttribute('class', 'table');
+    table.style.marginBottom = '40px';
+
+    th1.setAttribute('scope', 'col');
+    th1.textContent = 'Time';
+    th2.setAttribute('scope', 'col');
+    th2.textContent = 'Class';
+
+    trHead.appendChild(th1);
+    trHead.appendChild(th2);
+
+    thead.appendChild(trHead);
+
+    const tbody = document.createElement('tbody');
+    for (let j = 0; j < 9; j++) {
+      const tr = document.createElement('tr');
+      const td1 = document.createElement('td');
+      const td2 = document.createElement('td');
+
+      td1.textContent = days[dayMap[i]][j].split('  ')[0];
+      td2.textContent = days[dayMap[i]][j].split('  ')[1];
+
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+
+      tbody.appendChild(tr);
+    }
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    modalBody.appendChild(table);
+  }
+};
+
+// ******************************************************************
+
 const compute_start_and_end_time = (currentTime, time) => {
   let date = new Date(currentTime.getTime());
   date.setHours(time.split(':')[0]);
@@ -447,3 +498,5 @@ if (
     } 📚.`
   );
 }
+
+showAllTimeTables();
